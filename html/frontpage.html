@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="html/frontpage.js"></script>
+ <link rel="stylesheet" href="html/frontpage.css">
+</head>
+<body>
+	<div ng-controller="FrontpageCtrl">
+	  <form ng-submit="doSearch()">
+	  	<div class="container">
+		    <table>
+				<tr><td>First Name(s): </td><td><input ng-model="firstname" /><input ng-model="middlenameone" /><input ng-model="middlenametwo" /></td></tr>
+				<tr><td>Family Name: </td><td><input ng-model="lastname" /></td></tr>
+				<tr><td>Address: </td><td><input ng-model="address" /></td></tr>
+				<tr><td>Phone Number:</td> <td><input ng-model="phone" /></td></tr>
+			</table>
+		</div>
+		<div class="container">
+		<table><tr><td>
+			
+			<input  ng-model="combiner" type="radio" name="combiner" id="all" value = "all" checked><label for="all">ALL  matching</label> <br>
+			<input  ng-model="combiner" type="radio" name="combiner" id="one" value = "one"><label for="one">ONE  matching</label> <br>
+			<input  ng-model="combiner" type="radio" name="combiner" id="atleast" value = "atleast"><label for="atleast">
+			AT LEAST <input ng-model="nmatch" type="number" name="nmatch" min="2" max="5" value="2" id="nmatch">  matching</label> <br>	
+		</td><td>
+			<input  ng-model="anyfield" type="checkbox" name="anyfield" id="anyfield" value = "anyfield" checked><label for="anyfield">Names in ANY field</label> <br>
+		</td><td>
+			
+		<input ng-model="permute" type="radio" name="permute" id="exact" value="exact" ><label for="soundlike">Exact</label> <br>
+		<input ng-model="permute" type="radio" name="permute" id="soundlike" value="soundlike"><label for="soundlike">Sounds-like</label> <br>
+		<input ng-model="permute" type="radio" name="permute" id="typo" value="typovocab"><label for="typo">Typo (Smart)</label> <br>
+		<input ng-model="permute" type="radio" name="permute" id="typo" value="typo"><label for="typo">Typo (Naive - SLOW)</label> <br>
+	
+		</td><td>
+		<input id="search" class="btn-primary" type="submit" value="Search">
+		</td></tr></table></div>
+		
+		</form>
+		<hr/>
+		<div ng-show="isSearching" id="searching"> Searching... </div>
+		<div ng-show="hasResults" id="results">
+		
+		<table class="results" id="resultstable">
+			<thead class="results" >
+				<td colspan="3">First Name(s)</td>
+				<td>Family Name</td>
+				<td>Sex</td>
+				<td>Address</td>
+				<td>Postcode</td>
+				<td>Phone</td>
+				<td>Mobile</td>
+			</thead>
+			<tbody class="results"  ng:repeat="record in results">
+				<tr class="results" >
+					<td class="results" >{{record.firstname}}</td>
+					<td class="results" >{{record.middlenameone}}</td>
+					<td class="results" >{{record.middlenametwo}}</td>
+					<td class="results" >{{record.lastname}}</td>
+					<td class="results" >{{record.gender}}</td>
+					<td class="results" >{{record.address}}</td>
+					<td class="results" >{{record.postcode}}</td>
+					<td>{{record.phone}}</td>
+					<td>{{record.mobile}}</td>	
+				</tr>
+			</tbody>
+		</table>
+		
+		<p/>
+		 <em>Found {{explainplan.n}} documents in {{explainplan.millis}} ms </em>
+		</div>
+	</div>
+</body>
+</html>
