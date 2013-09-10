@@ -5,9 +5,6 @@ Created on Aug 25, 2013
 @author: jlp
 '''
 
-#TODO
-#Using AT LEAST WIth array field needs an unwind - count - rewind.
-#Using at least with typo also fails as the in clause isnt supported by aggregation, needs to become ors
 
 from bson import Binary, Code
 from bson.json_util import dumps
