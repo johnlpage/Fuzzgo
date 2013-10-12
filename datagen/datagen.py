@@ -41,7 +41,7 @@ database.nominals_v2_names.ensure_index([("p",pymongo.ASCENDING),
 males = open('male.txt').read().splitlines()
 females = open('female.txt').read().splitlines()
 lasts = open('last.txt').read().splitlines()
-postcodes = open("postcodes.csv").read().splitlines();
+postcodes = open("psmall.csv").read().splitlines();
 streets = open("streets.csv").read().splitlines();
 stdcodes = open("stdcodes.txt").read().splitlines();
 
